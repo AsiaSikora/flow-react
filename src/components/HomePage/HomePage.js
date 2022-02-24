@@ -1,15 +1,16 @@
 import React from 'react';
-import styles from './Body.module.css';
 import ButtonDefault from '../ButtonDefault/ButtonDefault';
+import LastMeasurements from '../LastMeasurements/LastMeasurements';
 
-function Body() {
+function HomePage() {
   return (
-    <div className={`${styles.body} container`}>
+    <div>
       <ButtonDefault title="Start measurement"/>
       <br/><br/>
+      <LastMeasurements/>
 
     </div>
   );
 }
 
-export default Body;
+export default HomePage;

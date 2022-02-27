@@ -54,7 +54,7 @@ class FetchApi extends Component {
   render() {
     return (
       <div>
-        <button class="btn btn-primary">Fetch APi!</button>
+        <p>Fetch APi!</p>
         {console.log(this.state.data)}
         {this.state.data && <User user={this.state.data} />}
       </div>

@@ -2,12 +2,14 @@ import React from 'react';
 import LastMeasurementsHeader from './LastMeasurementsHeader/LastMeasurementsHeader';
 import Measurement from './Measurement/Measurement';
 
-function LastMeasurements() {
+function LastMeasurements(props) {
   return (
     <div className="container">
       <LastMeasurementsHeader/>
-      <Measurement />
-      <Measurement />
+      {console.log(props.surveys)}
+      {props.surveys.map(survey => <Measurement key={survey.id} {...survey} />)}
+      {/* <Measurement />
+      <Measurement /> */}
     </div>
   );
 }

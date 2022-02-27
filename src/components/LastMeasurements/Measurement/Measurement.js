@@ -1,16 +1,18 @@
 import React from 'react';
 
-function Measurement() {
+function Measurement(props) {
   return (
     <div>
-        <div class="card">
-            <div class="card-header">
-                22.01.2022
+        <div className="card">
+            <div className="card-header">
+                {(props.date).slice(0,10)}
             </div>
-            <div class="card-body">
-                <h5 class="card-title">Company name</h5>
-                <p class="card-text">Average flow 21</p>
-                <a href="#" class="btn btn-primary">More</a>
+            <div className="card-body">
+                <h5 className="card-title">{props.localization.name}</h5>
+                <p className="card-text">
+                  Device number: {props.device.deviceNumber}
+                </p>
+                <a href="#" className="btn btn-primary">More</a>
             </div>
         </div>
         <br/>

@@ -28,6 +28,7 @@ class HomePage extends Component {
       <div>
         <ButtonDefault title="Start measurement"/>
         {this.state.data && <LastMeasurements surveys={this.state.data} />}
+        <ButtonDefault title="More measurements"/>
       </div>
     );
   }

@@ -5,7 +5,7 @@ import Measurement from "../../LastMeasurements/Measurement/Measurement";
 
 function SelectDevice(props) {
     return (
-        <div className="container d-flex justify-content-around">
+        <div>
             <Form.Select>
                 {props.device.map(device => <option key={device.id} {...device}>{device.deviceNumber}</option>)}
             </Form.Select>

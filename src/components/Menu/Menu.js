@@ -1,8 +1,9 @@
 import React from 'react';
+import styles from './Menu.module.css';
 
 function Menu() {
   return (
-    <div>
+    <div className={styles.menu}>
         <ul class="nav nav-pills justify-content-center">
             <li class="nav-item">
                 <a class="nav-link active" href="#">Home</a>
@@ -17,7 +18,6 @@ function Menu() {
                 <a class="nav-link disabled" href="#">Log out</a>
             </li>
         </ul>
-        <br/><br/>
     </div>
   );
 }

@@ -1,10 +1,11 @@
 import React from 'react';
+import styles from './LastMeasurementsHeader.module.css'
 
 function LastMeasurementsHeader() {
   return (
-    <div className="container">
-      <h3>Last Measurements</h3>
-      <hr/><br/>
+    <div className={`${styles.position} container`}>
+      <h4>Last Measurements</h4>
+      <hr/>
     </div>
   );
 }

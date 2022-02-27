@@ -1,8 +1,9 @@
 import React from 'react';
+import styles from './Measurement.module.css'
 
 function Measurement(props) {
   return (
-    <div>
+    <div className={styles.position}>
         <div className="card">
             <div className="card-header">
                 {(props.date).slice(0,10)}
@@ -15,7 +16,6 @@ function Measurement(props) {
                 <a href="#" className="btn btn-primary">More</a>
             </div>
         </div>
-        <br/>
     </div>
     
   );

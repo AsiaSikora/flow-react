@@ -4,18 +4,18 @@ import styles from './Menu.module.css';
 function Menu() {
   return (
     <div className={styles.menu}>
-        <ul class="nav nav-pills justify-content-center">
-            <li class="nav-item">
-                <a class="nav-link active" href="#">Home</a>
+        <ul className="nav nav-pills justify-content-center">
+            <li className="nav-item">
+                <a className="nav-link active" href="#">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Reports</a>
+            <li className="nav-item">
+                <a className="nav-link" href="#">Reports</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Localizations</a>
+            <li className="nav-item">
+                <a className="nav-link" href="#">Localizations</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Log out</a>
+            <li className="nav-item">
+                <a className="nav-link disabled" href="#">Log out</a>
             </li>
         </ul>
     </div>

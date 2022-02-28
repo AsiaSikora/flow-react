@@ -8,8 +8,6 @@ function LastMeasurements(props) {
       <LastMeasurementsHeader/>
       {console.log(props.surveys)}
       {props.surveys.map(survey => <Measurement key={survey.id} {...survey} />)}
-      {/* <Measurement />
-      <Measurement /> */}
     </div>
   );
 }

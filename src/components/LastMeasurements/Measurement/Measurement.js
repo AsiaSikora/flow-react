@@ -9,7 +9,7 @@ function Measurement(props) {
                 {(props.date).slice(0,10)}
             </div>
             <div className="card-body">
-                <h5 className="card-title">{props.localization.name}</h5>
+                <h5 className="card-title">Company: {props.localization.name}</h5>
                 <p className="card-text">
                   Device number: {props.device.deviceNumber}
                 </p>

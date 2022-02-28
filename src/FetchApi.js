@@ -12,7 +12,7 @@ class FetchApi extends Component {
 
   loadUsers()
   {
-    fetch('https://localhost:5000/api/Users')
+    fetch('http://localhost:5000/api/Users/1')
     .then(response => response.json())
     .then(data => this.setState({data : data}))
   }
@@ -21,6 +21,30 @@ class FetchApi extends Component {
   {
     console.log(this.state.data);
   }
+
+//   componentDidMount() {
+//     // Simple POST request with a JSON body using fetch
+//     const requestOptions = {
+//         method: 'POST',
+//         headers: { 'Content-Type': 'application/json' },
+//         body: JSON.stringify(
+//           {
+//             "firstName": "John",
+//             "lastName": "Snow",
+//             "email": "js@example.com",
+//             "password": "222"
+//           }
+//         )
+//     };
+//     fetch('http://localhost:5000/api/Users', requestOptions)
+//         .then(response => response.json())
+//         .then(data => {
+//           console.log('Success:', data);
+//         })
+//         .catch((error) => {
+//           console.error('Error:', error);
+//         });
+// }
 
   componentDidMount()
   {

@@ -22,6 +22,7 @@ ChartJS.register(
   Legend
 );
 
+
 export const options = {
   responsive: true,
   plugins: {
@@ -56,10 +57,12 @@ const data = {
   ],
 };
 
-export default function Graph() {
+function Graph() {
   return (
     <div className={styles.size}>
       <Line options={options} data={data} height="400px" />
     </div>
   );
 }
+
+export default Graph;

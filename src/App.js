@@ -4,13 +4,13 @@ import FetchApiHook from './FetchApiHook';
 import HomePage from './components/HomePage/HomePage';
 import NewMeasurement from './components/NewMeasurement/NewMeasurement';
 import PrivacyPolicy from './components/PrivacyPolicy/PrivacyPolicy';
-import Graph from './components/Details/Graph/Graph.tsx';
+import Details from './components/Details/Details';
 
 function App() {
     return (
         <div>
             <Menu/>
-            <Graph/>
+            <Details/>
             <NewMeasurement/>
             <HomePage />
             <PrivacyPolicy/>

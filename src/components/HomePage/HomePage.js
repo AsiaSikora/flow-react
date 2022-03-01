@@ -2,13 +2,15 @@ import React, {Component} from 'react';
 import ButtonDefault from '../ButtonDefault/ButtonDefault';
 import LastMeasurements from '../LastMeasurements/LastMeasurements';
 import NewMeasurement from '../NewMeasurement/NewMeasurement';
+import styles from './HomePage.module.css'
 
 class HomePage extends Component {
   
   constructor(props){
     super(props)
     this.state = {
-      data: null
+      data: null,
+      showNewMeasurement: false
     }
   }
   
@@ -24,11 +26,19 @@ class HomePage extends Component {
     this.loadSurveys();
   }
 
+  ShowNewMeasurement()
+  {
+    this.setState({showNewMeasurement: true})
+  }
+
   render(){
     return (
       <div>
-        <ButtonDefault title="Start measurement"/>
-        <NewMeasurement/>
+        <div className={styles.butt}>
+          <button className={`btn btn-outline-primary`} onClick={this.ShowNewMeasurement.bind(this)}>Start measurement</button>
+        </div>
+        
+        {this.state.showNewMeasurement? <NewMeasurement/> : ""}
         {this.state.data && <LastMeasurements surveys={this.state.data} />}
       </div>
     );

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Graph from './Graph/Graph.tsx';
+import SpecialPoints from './SpecialPoints/SpecialPoints';
 
 class Details extends Component {
 
@@ -28,6 +29,7 @@ class Details extends Component {
             <div>
                 {this.state.survey && <Graph survey={this.state.survey} />}
                 {console.log(this.state.survey)}
+                <SpecialPoints/>
             </div>
         )
     }

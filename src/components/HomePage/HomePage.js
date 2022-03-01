@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ButtonDefault from '../ButtonDefault/ButtonDefault';
 import LastMeasurements from '../LastMeasurements/LastMeasurements';
+import NewMeasurement from '../NewMeasurement/NewMeasurement';
 
 class HomePage extends Component {
   
@@ -27,6 +28,7 @@ class HomePage extends Component {
     return (
       <div>
         <ButtonDefault title="Start measurement"/>
+        <NewMeasurement/>
         {this.state.data && <LastMeasurements surveys={this.state.data} />}
       </div>
     );

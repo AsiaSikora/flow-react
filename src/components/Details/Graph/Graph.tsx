@@ -57,7 +57,8 @@ const data = {
   ],
 };
 
-function Graph() {
+function Graph(props) {
+  console.log(props.survey);
   return (
     <div className={styles.size}>
       <Line options={options} data={data} height="400px" />

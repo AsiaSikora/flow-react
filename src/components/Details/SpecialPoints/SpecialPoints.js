@@ -4,7 +4,7 @@ function SpecialPoints(props) {
     console.log(props);
     return (
         <div className="container">
-            <table class="table table-bordered">
+            <table className="table table-bordered">
                 <thead>
                     <tr>
                     <th scope="col">Time</th>

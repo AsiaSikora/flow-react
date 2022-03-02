@@ -1,6 +1,7 @@
 import React from "react"
 
 function SpecialPoints(props) {
+    console.log(props);
     return (
         <div className="container">
             <table class="table table-bordered">
@@ -12,6 +13,7 @@ function SpecialPoints(props) {
                 </thead>
                 <tbody>
                     {props.survey.measurements
+                    .filter(measurement => measurement.isSpecialPoint === true)
                     .map(measurement => 
                     <tr key={measurement.id} {...measurement}>
                         <td>{(measurement.time).slice(0,10)} at {(measurement.time).slice(11,16)}</td>

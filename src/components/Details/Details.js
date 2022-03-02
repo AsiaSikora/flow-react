@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Graph from './Graph/Graph.tsx';
+import Graph from './Graph/Graph.js';
 import SpecialPoints from './SpecialPoints/SpecialPoints';
 
 class Details extends Component {

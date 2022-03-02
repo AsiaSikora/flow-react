@@ -11,8 +11,8 @@ function SpecialPoints(props) {
                     </tr>
                 </thead>
                 <tbody>
-                {/* {props.device.map(device => <option key={device.id} {...device}>{device.deviceNumber}</option>)} */}
-                    {props.survey.measurements.map(measurement => 
+                    {props.survey.measurements
+                    .map(measurement => 
                     <tr key={measurement.id} {...measurement}>
                         <td>{(measurement.time).slice(0,10)} at {(measurement.time).slice(11,16)}</td>
                         <td>{measurement.currentFlow}</td>

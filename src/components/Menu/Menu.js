@@ -3,7 +3,7 @@ import styles from './Menu.module.css';
 
 function Menu() {
   return (
-    <div className={styles.menu}>
+    <div className={`sticky-top ${styles.menu}`}>
         <ul className="nav nav-pills justify-content-center">
             <li className="nav-item">
                 <a className="nav-link active" href="#">Home</a>

@@ -44,16 +44,8 @@ class Graph extends Component
   constructor(props)
   {
     super(props)
-    this.state = 
-    {
-      survey: null,
-    }
   }
 
-  // labels = this.props.survey.measurements.map(m => m.time);
-  // .map(survey => <Measurement key={survey.id} {...survey} />)
-  
-  
   render()
   {
     const labels = this.props.survey.measurements.map(m => m.time.slice(11,16));

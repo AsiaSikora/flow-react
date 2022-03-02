@@ -28,8 +28,7 @@ class Details extends Component {
         return(
             <div>
                 {this.state.survey && <Graph survey={this.state.survey} />}
-                {console.log(this.state.survey)}
-                <SpecialPoints/>
+                {this.state.survey && <SpecialPoints survey={this.state.survey}/>}
             </div>
         )
     }

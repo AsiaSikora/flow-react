@@ -1,6 +1,6 @@
 import React from "react"
 
-function SpecialPoints() {
+function SpecialPoints(props) {
     return (
         <div className="container">
             <table class="table table-bordered">
@@ -11,14 +11,12 @@ function SpecialPoints() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    </tr>
-                    <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    </tr>
+                {/* {props.device.map(device => <option key={device.id} {...device}>{device.deviceNumber}</option>)} */}
+                    {props.survey.measurements.map(measurement => 
+                    <tr key={measurement.id} {...measurement}>
+                        <td>{(measurement.time).slice(0,10)} at {(measurement.time).slice(11,16)}</td>
+                        <td>{measurement.currentFlow}</td>
+                    </tr>)}
                 </tbody>
             </table>
         </div>

@@ -35,9 +35,11 @@ class HomePage extends Component {
     return (
       <div>
         <div className={styles.butt}>
-          <button className={`btn btn-outline-primary`} onClick={this.ShowNewMeasurement.bind(this)}>Start measurement</button>
+          <button 
+          className={`btn btn-outline-primary`} 
+          onClick={this.ShowNewMeasurement.bind(this)}
+          >Start measurement</button>
         </div>
-        
         {this.state.showNewMeasurement? <NewMeasurement/> : ""}
         {this.state.data && <LastMeasurements surveys={this.state.data} />}
       </div>

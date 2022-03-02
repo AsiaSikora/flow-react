@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Graph from './Graph/Graph.js';
+import SurveyDetails from './SurveyDetails';
 import SpecialPoints from './SpecialPoints/SpecialPoints';
 
 class Details extends Component {
@@ -13,7 +14,7 @@ class Details extends Component {
 
     loadSurvey()
   {
-    fetch('http://localhost:5000/api/users/1002/surveys/2')
+    fetch('http://localhost:5000/api/users/2/surveys/2')
     .then(response => response.json())
     .then(data => this.setState({survey : data}))
   }
@@ -27,6 +28,7 @@ class Details extends Component {
     render(){
         return(
             <div>
+                {this.state.survey && <SurveyDetails survey={this.state.survey} />}
                 {this.state.survey && <Graph survey={this.state.survey} />}
                 {this.state.survey && <SpecialPoints survey={this.state.survey}/>}
             </div>

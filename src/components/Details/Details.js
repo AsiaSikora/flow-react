@@ -19,7 +19,7 @@ function Details() {
 
   React.useEffect(() => {
     loadSurvey();
-  }, [survey])
+  }, [])
 
   return(
       <div>

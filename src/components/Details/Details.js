@@ -2,38 +2,32 @@ import React, {Component} from 'react';
 import Graph from './Graph/Graph.js';
 import SurveyDetails from './SurveyDetails';
 import SpecialPoints from './SpecialPoints/SpecialPoints';
+import { useParams } from "react-router-dom";
 
-class Details extends Component {
+function Details() {
 
-    constructor(props){
-        super(props)
-        this.state = {
-            survey: null,
-        }
-    }
+  const[survey, setSurvey] = React.useState(null);
 
-    loadSurvey()
+  let params = useParams();
+
+  function loadSurvey()
   {
-    fetch('http://localhost:5000/api/users/1002/surveys/2')
+    fetch(`http://localhost:5000/api/users/1002/surveys/${params.id}`)
     .then(response => response.json())
-    .then(data => this.setState({survey : data}))
+    .then(data => setSurvey(data))
   }
 
-  componentDidMount()
-  {
-    this.loadSurvey();
-  }
+  React.useEffect(() => {
+    loadSurvey();
+  }, [survey])
 
-
-    render(){
-        return(
-            <div>
-                {this.state.survey && <SurveyDetails survey={this.state.survey} />}
-                {this.state.survey && <Graph survey={this.state.survey} />}
-                {this.state.survey && <SpecialPoints survey={this.state.survey}/>}
-            </div>
-        )
-    }
+  return(
+      <div>
+          {survey && <SurveyDetails survey={survey} />}
+          {survey && <Graph survey={survey} />}
+          {survey && <SpecialPoints survey={survey}/>}
+      </div>
+  )
 }
 
 export default Details;

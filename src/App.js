@@ -10,14 +10,14 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 function App() {
     return (
         <div>
-            <Menu/>
             <Router>
+                <Menu/>
                 <Routes>
                     <Route path="/surveys/:id" element={<Details />} />
                     <Route path="/" element={<HomePage />} />
                 </Routes>
+                <PrivacyPolicy/>
             </Router>
-            <PrivacyPolicy/>
         </div>
     );
 }

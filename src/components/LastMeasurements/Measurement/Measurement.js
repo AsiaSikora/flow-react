@@ -1,7 +1,11 @@
 import React from 'react';
 import styles from './Measurement.module.css'
+import { useNavigate } from "react-router-dom";
 
 function Measurement(props) {
+
+  let navigate = useNavigate();
+
   return (
     <div className={styles.position}>
         <div className="card">
@@ -13,7 +17,11 @@ function Measurement(props) {
                 <p className="card-text">
                   Device number: {props.device.deviceNumber}
                 </p>
-                <a href="#" className="btn btn-primary">More</a>
+                <button 
+                onClick={async () => {
+                    navigate(`/surveys/${props.id}`)}} 
+                className="btn btn-primary">
+                More</button>
             </div>
         </div>
     </div>

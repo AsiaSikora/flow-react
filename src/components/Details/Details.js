@@ -14,7 +14,7 @@ class Details extends Component {
 
     loadSurvey()
   {
-    fetch('http://localhost:5000/api/users/2/surveys/2')
+    fetch('http://localhost:5000/api/users/1002/surveys/2')
     .then(response => response.json())
     .then(data => this.setState({survey : data}))
   }

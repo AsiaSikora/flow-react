@@ -6,7 +6,6 @@ function LastMeasurements(props) {
   return (
     <div className="container">
       <LastMeasurementsHeader/>
-      {console.log(props.surveys)}
       {props.surveys.map(survey => <Measurement key={survey.id} {...survey} />)}
     </div>
   );

@@ -16,7 +16,7 @@ class HomePage extends Component {
   
   loadSurveys()
   {
-    fetch('http://localhost:5000/api/users/2/surveys/last-five-measurements')
+    fetch('http://localhost:5000/api/users/2/surveys/last-five-surveys')
     .then(response => response.json())
     .then(data => this.setState({data : data}))
   }

@@ -12,15 +12,15 @@ import Reports from "./components/Reports/Reports";
 function App() {
     return (
         <div>
-            <Menu/>
             <Router>
+                <Menu/>
                 <Routes>
                     <Route path="/surveys/:id" element={<Details />} />
                     <Route path="/" element={<HomePage />} />
                     <Route path="/surveys" element={<Reports />} />
                 </Routes>
+                <PrivacyPolicy/>
             </Router>
-            <PrivacyPolicy/>
         </div>
     );
 }

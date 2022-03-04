@@ -10,7 +10,7 @@ function Menu() {
                 <Link to="/" className="nav-link active">Home</Link>
             </li>
             <li className="nav-item">
-                <a className="nav-link" href="#">Reports</a>
+                <Link to="/surveys" className="nav-link">Reports</Link>
             </li>
             <li className="nav-item">
                 <a className="nav-link" href="#">Localizations</a>

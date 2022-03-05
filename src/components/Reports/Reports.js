@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import ReportsDetails from './ReportsDetails/ReportsDetails';
-import SurveyDetails from "../Details/SurveyDetails";
+import SurveyDetails from "../Details/SurveyDetails/SurveyDetails";
 
 
 class Reports extends Component {

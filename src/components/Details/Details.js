@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Graph from './Graph/Graph.js';
-import SurveyDetails from './SurveyDetails';
+import SurveyDetails from './SurveyDetails/SurveyDetails';
 import SpecialPoints from './SpecialPoints/SpecialPoints';
 import { useParams } from "react-router-dom";
 

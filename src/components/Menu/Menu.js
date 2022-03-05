@@ -1,16 +1,16 @@
 import React from 'react';
 import styles from './Menu.module.css';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 function Menu() {
   return (
     <div className={`sticky-top ${styles.menu}`}>
         <ul className="nav nav-pills justify-content-center">
             <li className="nav-item">
-                <Link to="/" className="nav-link active">Home</Link>
+                <NavLink to="/" className="nav-link">Home</NavLink>
             </li>
             <li className="nav-item">
-                <Link to="/surveys" className="nav-link">Reports</Link>
+                <NavLink to="/surveys" className="nav-link">Reports</NavLink>
             </li>
             <li className="nav-item">
                 <a className="nav-link" href="#">Localizations</a>

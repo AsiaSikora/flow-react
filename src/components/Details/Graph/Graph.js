@@ -31,7 +31,7 @@ export const options = {
     },
     title: {
       display: true,
-      text: '',
+      text: 'Flow and temperature chart',
     },
   },
   maintainAspectRatio: false

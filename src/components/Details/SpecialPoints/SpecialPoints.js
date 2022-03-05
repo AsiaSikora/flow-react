@@ -1,9 +1,12 @@
-import React from "react"
+import React from "react";
+import styles from './SpecialPoints.module.css'
 
 function SpecialPoints(props) {
     console.log(props);
     return (
-        <div className="container">
+        <div className={`${styles.position} container`}>
+            <h4>Special points</h4>
+            <hr/>
             <table className="table table-bordered">
                 <thead>
                     <tr>

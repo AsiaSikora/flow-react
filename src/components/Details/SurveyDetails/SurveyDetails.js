@@ -20,9 +20,4 @@ function SurveyDetails(props) {
     )
 }
 
-// style="width: 18rem;"
-
-
-
-
 export default SurveyDetails;

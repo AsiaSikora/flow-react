@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import ReportsDetails from './ReportsDetails/ReportsDetails';
 import SurveyDetails from "../Details/SurveyDetails/SurveyDetails";
+import LoadingIcon from "../LoadingIcon/LoadingIcon";
 
 
 class Reports extends Component {
@@ -26,7 +27,7 @@ class Reports extends Component {
     render() {
         return (
             <div>
-                {this.state.loading ? <div>loading data...</div> :
+                {this.state.loading ? <LoadingIcon /> :
                     <div>{this.state.surveys.map(el => <ReportsDetails key={el.id} survey={el}/>)}</div>}
             </div>
         )

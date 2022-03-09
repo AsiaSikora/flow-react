@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import SelectDevice from './SelectDevice/SelectDevice';
 import styles from './NewMeasurement.module.css';
-import LastMeasurements from "../LastMeasurements/LastMeasurements";
 import SelectLocalization from './SelectLocalization/SelectLocalization';
 
 class NewMeasurement extends Component {
@@ -32,12 +31,18 @@ class NewMeasurement extends Component {
 
     render() {
         return (
-            <div className={`${styles.form} container d-flex`}>
-                {this.state.devices && 
-                <SelectDevice device={this.state.devices} />}
-                {this.state.localizations && 
-                <SelectLocalization localizations={this.state.localizations} />}
+            <div>
+                <div className={`${styles.form} container d-flex justify-content-center`}>
+                    {this.state.devices && 
+                    <SelectDevice device={this.state.devices} />}
+                    {this.state.localizations && 
+                    <SelectLocalization localizations={this.state.localizations} />}
+                </div>
+                <div className="d-flex justify-content-center">
+                    <button type="button" class="btn btn-primary">Submit</button>
+                </div>
             </div>
+            
         );
     }
 

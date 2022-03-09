@@ -5,7 +5,7 @@ import ButtonDefault from "../../ButtonDefault/ButtonDefault";
 function SelectLocalization(props) {
     return (
         <div>
-            <h3>Select localization</h3>
+            <h5>Select localization</h5>
             <Form.Select>
                 {props.localizations.map(loc => <option key={loc.id} {...loc}>{loc.name}</option>)}
             </Form.Select>

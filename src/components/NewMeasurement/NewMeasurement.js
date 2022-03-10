@@ -33,7 +33,7 @@ class NewMeasurement extends Component {
     render() {
         return (
             <div>
-                {this.state.localizations &&
+                {this.state.devices &&
                 this.state.localizations && 
                     <SelectDeviceLocalization 
                     localizations={this.state.localizations}

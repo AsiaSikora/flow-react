@@ -3,6 +3,7 @@ import {useSpring, animated} from "react-spring";
 import {MdClose} from 'react-icons/md'
 import styles from './Modal.module.css'
 import ButtonDefault from "../ButtonDefault/ButtonDefault";
+import ModalForm from "./ModalForm/ModalForm";
 
 
 export const Modal = ({showModal, setShowModal}) => {
@@ -21,26 +22,26 @@ export const Modal = ({showModal, setShowModal}) => {
             setShowModal(false);
         }
     };
+
+    const closeAfterSubmit = () => setShowModal(false);
     return (
         <>
             {showModal ? (
                 <div className={styles.background} onClick={closeModal} ref={modalRef}>
-                        <animated.div style={animation}>
-                            <div className={styles.modalWrapper}>
-                                <div className={styles.modalContent}>
-                                    <h1>Are you ready?</h1>
-                                    <p>Tu będzie formularz ale potrzebuje jeszcze jednego dnia :p</p>
-                                    <ButtonDefault title="Submit"/>
-                                </div>
-                                <MdClose className={styles.closeModalButton}
-                                    aria-label='Close modal'
-                                    onClick={() => setShowModal(prev => !prev)}
-                                />
+                    <animated.div style={animation}>
+                        <div className={styles.modalWrapper}>
+                            <div className={styles.modalContent}>
+                                <ModalForm closeModal={closeAfterSubmit}/>
                             </div>
-                        </animated.div>
-                    </div>
-                    ) : null}
+                            <MdClose className={styles.closeModalButton}
+                                     aria-label='Close modal'
+                                     onClick={() => setShowModal(prev => !prev)}
+                            />
+                        </div>
+                    </animated.div>
+                </div>
+            ) : null}
 
-                </>
-                )
-            }
+        </>
+    )
+}

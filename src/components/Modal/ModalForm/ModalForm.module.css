@@ -1,7 +1,15 @@
-p {
-  display: inline-block;
-    margin-right: 17px;
-}
+form { display: table;      }
+p     { display: table-row;  }
+label { display: table-cell; }
+input { display: table-cell; margin-left: 10px}
+button[type=button] { display: table-row; margin-left: 110% }
+
+
+
+
+
+
+
 
 ::placeholder {
   color: grey;

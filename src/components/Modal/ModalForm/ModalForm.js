@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import styles from './ModalForm.module.css'
 import ButtonDefault from "../../ButtonDefault/ButtonDefault";
+import { useForm } from 'react-hook-form';
 
 function Form(props) {
     const [longitude, setLongitude] = useState("Provide longitude");
@@ -17,12 +18,15 @@ function Form(props) {
     function ChangeLongitude(event) {
         setLongitude(event.target.value);
     }
+
     function ChangeLatitude(event) {
         setLatitude(event.target.value);
     }
+
     function ChangeName(event) {
         setName(event.target.value);
     }
+
     function ChangeCanalRadius(event) {
         setCanalRadius(event.target.value);
     }
@@ -55,26 +59,34 @@ function Form(props) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                <p>Name of the new localization:</p>
-                <input placeholder={name} onChange={ChangeName} onfocusout={clearNameField}/>
-            </label><br />
-            <label>
-                <p>Longitude:</p>
-                <input placeholder={longitude} onChange={ChangeLongitude} onfocusout={clearLongitudeField}/><br />
-            </label><br />
-            <label>
-                <p>Latitude:</p>
-                <input placeholder={latitude} onChange={ChangeLatitude} onfocusout={clearLatitudeField}/>
-            </label><br />
-            <label>
-                <p>Canal Radius:</p>
-                <input placeholder={canalRadius} onChange={ChangeCanalRadius} onfocusout={clearCanalRadiusField}/>
-            </label><br />
-            <ButtonDefault title="Submit" />
-        </form>
+        <>
+            <h3>New localization</h3>
+            <form onSubmit={handleSubmit} >
+                <p>
+                    <label>Name:</label>
+                    <input placeholder={name} onChange={ChangeName} onfocusout={clearNameField} required="aaa"/>
+                </p><br/>
+                <p>
+                    <label>Longitude:</label>
+                    <input placeholder={longitude} onChange={ChangeLongitude} onfocusout={clearLongitudeField}/><br/>
+                </p><br/>
+                <p>
+                    <label>Latitude:</label>
+                    <input placeholder={latitude} onChange={ChangeLatitude} onfocusout={clearLatitudeField}/>
+                </p><br/>
+                <p>
+                    <label>Canal radius:</label>
+                    <input placeholder={canalRadius} onChange={ChangeCanalRadius} onfocusout={clearCanalRadiusField}/>
+                </p><br/>
+                <p>
+                <button type="button" className="btn btn-outline-primary">Submit</button>
+                    </p>
+
+            </form>
+        </>
     )
 }
+
+
 
 export default Form;

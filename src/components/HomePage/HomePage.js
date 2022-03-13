@@ -48,7 +48,7 @@ class HomePage extends Component {
                         <button
                             className={`btn btn-outline-primary`}
                             onClick={this.HideNewMeasurement.bind(this)}
-                        >Hide measurement
+                        >Stop measurement
                         </button>
                     </div>}
                 {this.state.showNewMeasurement ? <NewMeasurement/> : ""}

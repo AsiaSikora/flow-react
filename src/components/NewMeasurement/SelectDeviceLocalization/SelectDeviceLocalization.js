@@ -38,10 +38,11 @@ function SelectDeviceLocalization(props){
     }
 
     const handleChangeDevice = (event) => {
-        const index = event.target.selectedIndex;
-        const optionElement = event.target.childNodes[index];
-        const optionElementId = optionElement.getAttribute('id');
-        setDevice(optionElementId)
+        const deviceIndex = event.target.selectedIndex;
+        const deviceOptionElement = event.target.childNodes[deviceIndex];
+        const deviceOptionElementId = deviceOptionElement.getAttribute('id');
+        setDevice(deviceOptionElementId);
+        console.log("device ", deviceOptionElementId);
     }
 
     const handleChangeLocalization = (event) => {
@@ -49,6 +50,7 @@ function SelectDeviceLocalization(props){
         const optionElement = event.target.childNodes[index];
         const optionElementId = optionElement.getAttribute('id');
         setLocalization(optionElementId)
+        console.log("localization ", optionElementId);
     }
 
     return(
@@ -75,8 +77,7 @@ function SelectDeviceLocalization(props){
         </div>
         : 
         <div>
-            {console.log(survey)}
-            {survey && <CurrentMeasurement survey={survey} />}
+            {survey && <CurrentMeasurement id={survey.id} />}
         </div>}
         </div>
     )

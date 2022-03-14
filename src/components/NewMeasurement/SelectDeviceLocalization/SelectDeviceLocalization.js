@@ -1,16 +1,24 @@
 import {useState} from "react";
 import ButtonDefault from "../../ButtonDefault/ButtonDefault";
-import {Modal} from "../../Modal/Modal";
+import {LocalizationModal} from "../../Modals/Localization/LocalizationModal";
+import {DeviceModal} from "../../Modals/Device/DeviceModal";
 
 
 function SelectDeviceLocalization(props) {
 
     const [device, setDevice] = useState('');
     const [localization, setLocalization] = useState('');
-    const [showModal, setShowModal] = useState(false);
+    const [showModalLocalization, setShowModalLocalization] = useState(false);
+    const [showModalDevice, setShowModalDevice] = useState(false);
+    let devicesNumbers = [];
+    const getAndAddDeviceNumbers = props.devices.map(el => devicesNumbers.push(el.deviceNumber));
 
-    const openModal = () => {
-        setShowModal(prev => !prev);
+    const openModalForLocalization = () => {
+        setShowModalLocalization(prev => !prev);
+    }
+
+    const openModalForDevice = () => {
+        setShowModalDevice(prev => !prev);
     }
 
     const submit = (e) => {
@@ -37,11 +45,13 @@ function SelectDeviceLocalization(props) {
 
     }
 
+
     return (
         <>
-            <ButtonDefault title="Add new localization" onClick={openModal}/>
-            <Modal showModal={showModal} setShowModal={setShowModal}/>
-
+            <ButtonDefault title="Add new localization" onClick={openModalForLocalization}/>
+            <LocalizationModal showModal={showModalLocalization} setShowModal={setShowModalLocalization}/>
+            <ButtonDefault title="Add new device" onClick={openModalForDevice}/>
+            <DeviceModal showModal={showModalDevice} setShowModal={setShowModalDevice} devicesNumbers={devicesNumbers}/>
             <div className="container">
                 <form onSubmit={submit}>
                     <div className="form-group">
@@ -54,7 +64,6 @@ function SelectDeviceLocalization(props) {
                             value={device}
                             onChange={e => setDevice(e.target.value)}
                         >
-                            {console.log(props.devices)}
                             {props.devices.map(device => <option
                                 key={device.id} {...device}>{device.deviceNumber}</option>)}
                         </select>

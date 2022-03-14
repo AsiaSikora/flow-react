@@ -1,0 +1,27 @@
+Form[typeof=localization] { display: table;      }
+p     { display: table-row;  }
+label { display: table-cell; }
+input { display: table-cell; margin-left: 10px}
+button[type=submit] { display: table-row;
+    margin-left: 100% }
+
+
+
+
+
+
+
+
+
+::placeholder {
+  color: grey;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color: red;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+ color: red;
+}

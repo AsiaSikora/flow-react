@@ -1,12 +1,12 @@
 import React, {useRef} from "react";
 import {useSpring, animated} from "react-spring";
 import {MdClose} from 'react-icons/md'
-import styles from './Modal.module.css'
-import ButtonDefault from "../ButtonDefault/ButtonDefault";
-import ModalForm from "./ModalForm/ModalForm";
+import styles from '../ModalForm/Modal.module.css'
+import ButtonDefault from "../../ButtonDefault/ButtonDefault";
+import ModalForm from "../ModalForm/LocalizationModalForm";
 
 
-export const Modal = ({showModal, setShowModal}) => {
+export const LocalizationModal = ({showModal, setShowModal}) => {
     const modalRef = useRef();
 
     const animation = useSpring({

@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import styles from './ModalForm.module.css'
+import styles from './LocalizationModalForm.module.css'
 import ButtonDefault from "../../ButtonDefault/ButtonDefault";
 import { useForm } from 'react-hook-form';
 
@@ -61,26 +61,27 @@ function Form(props) {
     return (
         <>
             <h3>New localization</h3>
-            <form onSubmit={handleSubmit} >
+            <form typeof="localization" onSubmit={handleSubmit} >
                 <p>
                     <label>Name:</label>
-                    <input placeholder={name} onChange={ChangeName} onfocusout={clearNameField} required="aaa"/>
+                    <input placeholder={name} onChange={ChangeName} onFocus={clearNameField} required/>
                 </p><br/>
                 <p>
                     <label>Longitude:</label>
-                    <input placeholder={longitude} onChange={ChangeLongitude} onfocusout={clearLongitudeField}/><br/>
+                    <input placeholder={longitude} onChange={ChangeLongitude} onFocus={clearLongitudeField} required/><br/>
                 </p><br/>
                 <p>
                     <label>Latitude:</label>
-                    <input placeholder={latitude} onChange={ChangeLatitude} onfocusout={clearLatitudeField}/>
+                    <input placeholder={latitude} onChange={ChangeLatitude} onFocus={clearLatitudeField} required/>
                 </p><br/>
                 <p>
                     <label>Canal radius:</label>
-                    <input placeholder={canalRadius} onChange={ChangeCanalRadius} onfocusout={clearCanalRadiusField}/>
+                    <input placeholder={canalRadius} onChange={ChangeCanalRadius} onFocus={clearCanalRadiusField} required/>
                 </p><br/>
-                <p>
-                <button type="button" className="btn btn-outline-primary">Submit</button>
-                    </p>
+
+                <button type="submit" className="btn btn-outline-primary">Submit</button>
+
+
 
             </form>
         </>

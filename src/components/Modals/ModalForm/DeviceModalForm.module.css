@@ -1,8 +1,9 @@
-form { display: table;      }
-p     { display: table-row;  }
-label { display: table-cell; }
-input { display: table-cell; margin-left: 10px}
-button[type=button] { display: table-row; margin-left: 110% }
+
+button[type=aaa] { display: block;
+    margin: 0 auto; }
+
+#fieldForDevice { display: block;
+    margin: 0 auto;}
 
 
 

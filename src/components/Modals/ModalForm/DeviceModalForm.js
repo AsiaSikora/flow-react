@@ -17,6 +17,7 @@ import {
 } from 'react-form-with-constraints-bootstrap';
 import {DisplayFields} from 'react-form-with-constraints-tools';
 import {wait} from "@testing-library/user-event/dist/utils";
+import LoadingIcon from "../../LoadingIcon/LoadingIcon";
 
 function Form(props) {
     const form = useRef(null);
@@ -25,14 +26,20 @@ function Form(props) {
     const clearNameField = () => setDeviceNumber('');
 
     async function ChangeName(event) {
+        let checkIfNumberAlreadyExists = props.devicesNumbers.includes(parseInt(event.target.value))
         setDeviceNumber(event.target.value);
         console.log(event.target.value);
         await form.current.validateFields(event.target);
-        setSubmitButtonDisabled(!form.current.isValid());
+        if (event.target.value > 0) {
+            setSubmitButtonDisabled(checkIfNumberAlreadyExists)
+        }
     }
 
     async function checkDeviceNumberAvailability(value) {
-        await wait(200);
+        await wait(500);
+        if (isNaN(value) || /\s/.test(value)){
+          return false;
+        }
         return !props.devicesNumbers.includes(parseInt(value));
     }
 
@@ -57,7 +64,7 @@ function Form(props) {
             })
             .catch((error) => {
                 console.error('Error:', error);
-            }).then(setSubmitButtonDisabled)
+            })
             .then(props.closeModal());
 
     }
@@ -68,7 +75,9 @@ function Form(props) {
 
             <FormWithConstraints ref={form} typeof="device" onSubmit={handleSubmit} noValidate>
                 <p>
-                    <label>Device number:</label>
+                    <label>
+                        <div className={styles.title}>Device number:</div>
+                    </label>
                     <Input
                         placeholder={deviceNumber}
                         onChange={ChangeName}
@@ -78,28 +87,33 @@ function Form(props) {
                         id="deviceModal"
                         name="deviceModal"
                     />
-                </p><br/>
-                <FieldFeedbacks  for="deviceModal" >
-                        <FieldFeedback id="fieldForDevice" when="tooShort">Too short</FieldFeedback>
-                        <FieldFeedback when="*"/>
-                        <Async
-                            promise={checkDeviceNumberAvailability}
-                            pending={<span className="d-block">...</span>}
-                            then={available =>
-                                available ? (
-                                    <FieldFeedback key="1" style={{color: '#198754' /* $green */}}>
-                                        Device number available
-                                    </FieldFeedback>
-                                ) : (
-                                    <FieldFeedback key="2">Device number already taken, choose another</FieldFeedback>
-                                )
-                            }
-                        />
-
-                    </FieldFeedbacks>
+                </p>
                 <br/>
-                <div><button type="aaa"  className="btn btn-outline-primary">Submit
-                </button></div>
+                <FieldFeedbacks for="deviceModal">
+                    <FieldFeedback id="fieldForDevice" when="tooShort">Too short</FieldFeedback>
+                    <FieldFeedback when="*"/>
+                    <Async
+                        promise={checkDeviceNumberAvailability}
+                        pending={<span className="d-block"><div className={styles.info}>...</div></span>}
+                        then={available =>
+                            available ? (
+                                <FieldFeedback key="1" style={{color: '#198754' /* $green */}}>
+                                    <div className={styles.info}>Device number available.</div>
+                                </FieldFeedback>
+                            ) : (
+                                <FieldFeedback key="2">
+                                    <div className={styles.info}>Device number already taken or wrong input, choose another.</div>
+                                </FieldFeedback>
+                            )
+                        }
+                    />
+
+                </FieldFeedbacks>
+                <br/>
+                <div>
+                    <button type="aaa" disabled={submitButtonDisabled} className="btn btn-outline-primary">Submit
+                    </button>
+                </div>
             </FormWithConstraints>
         </>
     )

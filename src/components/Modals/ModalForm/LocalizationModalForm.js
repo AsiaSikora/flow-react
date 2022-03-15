@@ -25,6 +25,7 @@ function Form(props) {
 
     function ChangeName(event) {
         setName(event.target.value);
+        console.log(event.target.value)
     }
 
     function ChangeCanalRadius(event) {
@@ -32,8 +33,8 @@ function Form(props) {
     }
 
     function handleSubmit(e) {
-
         e.preventDefault();
+
         console.log(longitude, latitude, name, canalRadius)
         const requestOptions = {
             method: 'POST',
@@ -61,7 +62,7 @@ function Form(props) {
     return (
         <>
             <h3>New localization</h3>
-            <form typeof="localization" onSubmit={handleSubmit} >
+            <form typeof="localization" onSubmit={handleSubmit}>
                 <p>
                     <label>Name:</label>
                     <input placeholder={name} onChange={ChangeName} onFocus={clearNameField} required/>
@@ -80,14 +81,10 @@ function Form(props) {
                 </p><br/>
 
                 <button type="submit" className="btn btn-outline-primary">Submit</button>
-
-
-
             </form>
         </>
     )
 }
-
 
 
 export default Form;

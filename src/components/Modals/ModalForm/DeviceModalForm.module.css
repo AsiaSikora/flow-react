@@ -2,8 +2,15 @@
 button[type=aaa] { display: block;
     margin: 0 auto; }
 
-#fieldForDevice { display: block;
-    margin: 0 auto;}
+.info {
+    display: flex;
+    justify-content: center;
+}
+
+.title {
+
+}
+
 
 
 

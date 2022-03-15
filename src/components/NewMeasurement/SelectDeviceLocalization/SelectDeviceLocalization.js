@@ -60,6 +60,7 @@ function SelectDeviceLocalization(props){
             <form onSubmit={submit}>
                 <label for="selectDevice"><b>Select device</b></label>
                 <Form.Select onChange={handleChangeDevice} id="selectDevice">
+                    <option>---</option>
                     {props.devices
                     .map(dev => <option key={dev.id} {...dev}>{dev.deviceNumber}</option>)}
                 </Form.Select>
@@ -67,6 +68,7 @@ function SelectDeviceLocalization(props){
                 <br/>
                 <label for="selectLocalization"><b>Select localization</b></label>
                 <Form.Select onChange={handleChangeLocalization} id="selectLocalization">
+                    <option>---</option>
                     {props.localizations
                     .map(loc => <option key={loc.id} {...loc}>{loc.name}</option>)}
                 </Form.Select>

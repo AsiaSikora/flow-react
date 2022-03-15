@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ButtonDefault from '../ButtonDefault/ButtonDefault';
+import {Modal, Button} from "react-bootstrap";
 import LastMeasurements from '../LastMeasurements/LastMeasurements';
 import NewMeasurement from '../NewMeasurement/NewMeasurement';
 import styles from './HomePage.module.css'
@@ -44,9 +44,9 @@ class HomePage extends Component {
                         </button>
                     </div>
                     :
-                    <div className={styles.button}>
+                    <div className={`${styles.button}`}>
                         <button
-                            className={`btn btn-outline-primary`}
+                            className={`${styles.stop} btn btn-outline-primary`}
                             onClick={this.HideNewMeasurement.bind(this)}
                         >Stop measurement
                         </button>

@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import {Modal, Button} from "react-bootstrap";
 import LastMeasurements from '../LastMeasurements/LastMeasurements';
 import NewMeasurement from '../NewMeasurement/NewMeasurement';
-import styles from './HomePage.module.css'
+import styles from './HomePage.module.css';
+import Alert from './Alert/Alert';
+
 
 class HomePage extends Component {
 
@@ -46,11 +48,7 @@ class HomePage extends Component {
                     </div>
                     :
                     <div className={`${styles.button}`}>
-                        <button
-                            className={`${styles.stop} btn btn-outline-primary`}
-                            onClick={this.HideNewMeasurement.bind(this)}
-                        >Stop measurement
-                        </button>
+                        < Alert hideMeasurement={this.HideNewMeasurement.bind(this)}/>
                     </div>}
                 {this.state.showNewMeasurement ? <NewMeasurement/> : ""}
                 {this.state.data && <LastMeasurements surveys={this.state.data}/>}

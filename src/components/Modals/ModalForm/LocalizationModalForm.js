@@ -61,7 +61,7 @@ function Form(props) {
 
     return (
         <>
-            <h3>New localization</h3>
+            <h3>New localization</h3><br/>
             <form typeof="localization" onSubmit={handleSubmit}>
                 <p>
                     <label>Name:</label>
@@ -69,7 +69,7 @@ function Form(props) {
                 </p><br/>
                 <p>
                     <label>Longitude:</label>
-                    <input placeholder={longitude} onChange={ChangeLongitude} onFocus={clearLongitudeField} required/><br/>
+                    <input placeholder={longitude} onChange={ChangeLongitude} onFocus={clearLongitudeField} required/>
                 </p><br/>
                 <p>
                     <label>Latitude:</label>

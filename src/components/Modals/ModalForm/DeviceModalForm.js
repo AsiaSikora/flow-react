@@ -71,12 +71,12 @@ function Form(props) {
 
     return (
         <>
-            <h3>New device</h3>
+            <h3>New device</h3><br/>
 
             <FormWithConstraints ref={form} typeof="device" onSubmit={handleSubmit} noValidate>
-                <p>
+                <p className={styles.title}>
                     <label>
-                        <div className={styles.title}>Device number:</div>
+                        <div>Device number:</div>
                     </label>
                     <Input
                         placeholder={deviceNumber}

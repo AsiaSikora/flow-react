@@ -30,6 +30,7 @@ class HomePage extends Component {
 
     HideNewMeasurement() {
         this.setState({showNewMeasurement: false})
+        this.loadSurveys();
     }
 
     render() {

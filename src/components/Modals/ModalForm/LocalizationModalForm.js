@@ -61,9 +61,8 @@ function Form(props) {
     }
 
     async function checkLocalizationNameAvailability(value) {
-        await wait(50);
         if (!(/\S/.test(value)) || value === '') {
-          return false;
+            return false;
         }
         return !props.localizationsNames.includes(value);
     }
@@ -98,52 +97,61 @@ function Form(props) {
 
     return (
         <>
-            <h3>New localization</h3><br/>
-            <FormWithConstraints ref={form} className={styles.form} type="localization" onSubmit={handleSubmit} noValidate>
-                <p>
-                    <label>Name:</label>
-                    <input
-                        placeholder={name}
-                        onChange={ChangeName}
-                        onFocus={clearNameField}
-                        id="localizationName"
-                        name="localizationName"
-                        minLength={1}
-                        required
+            <h3>New localization</h3>
+            <FormWithConstraints ref={form} type="localization" onSubmit={handleSubmit}
+                                 noValidate>
+                <br/>
+                <div className={styles.tableForm}>
+
+                    <p>
+                        <label>Name:</label>
+                        <input
+                            placeholder={name}
+                            onChange={ChangeName}
+                            onFocus={clearNameField}
+                            id="localizationName"
+                            name="localizationName"
+                            minLength={1}
+                            required
                         />
-                </p><br/>
-                <p>
-                    <label>Longitude:</label>
-                    <input
-                        placeholder={longitude}
-                        onChange={ChangeLongitude}
-                        onFocus={clearLongitudeField}
-                        id="longitude"
-                        name="longitude"
-                        required/>
-                </p><br/>
-                <p>
-                    <label>Latitude:</label>
-                    <input placeholder={latitude} onChange={ChangeLatitude} onFocus={clearLatitudeField} required/>
-                </p><br/>
-                <p>
-                    <label>Canal radius:</label>
-                    <input placeholder={canalRadius} onChange={ChangeCanalRadius} onFocus={clearCanalRadiusField} required/>
-                </p><br/><br/>
+                    </p><br/>
+                    <p>
+                        <label>Longitude:</label>
+                        <input
+                            placeholder={longitude}
+                            onChange={ChangeLongitude}
+                            onFocus={clearLongitudeField}
+                            id="longitude"
+                            name="longitude"
+                            required/>
+                    </p><br/>
+                    <p>
+                        <label>Latitude:</label>
+                        <input placeholder={latitude} onChange={ChangeLatitude} onFocus={clearLatitudeField} required/>
+                    </p><br/>
+                    <p>
+                        <label>Canal radius:</label>
+                        <input placeholder={canalRadius} onChange={ChangeCanalRadius} onFocus={clearCanalRadiusField}
+                               required/>
+                    </p><br/>
+
+                </div>
                 <FieldFeedbacks for="localizationName">
                     <FieldFeedback id="fieldForLocalization" when="tooShort">Too short</FieldFeedback>
                     <FieldFeedback when="*"/>
                     <Async
                         promise={checkLocalizationNameAvailability}
-                        pending={<span className="d-block"><div className={styles.info}>...</div></span>}
+                        pending={<span className="d-block"><div className={styles.info}>...<br/></div></span>}
                         then={available =>
                             available ? (
                                 <FieldFeedback key="1" style={{color: '#198754' /* $green */}}>
-                                    <div  className={styles.info}>Localization name available.</div>
+                                    <div className={styles.info}>Localization name available.</div><br/>
                                 </FieldFeedback>
                             ) : (
                                 <FieldFeedback key="2">
-                                    <div className={styles.info}>Localization name already taken or wrong input, choose another.</div>
+                                    <div className={styles.info}>Localization name already taken <br/>or wrong input, choose
+                                        another.
+                                    </div>
                                 </FieldFeedback>
                             )
                         }
@@ -155,8 +163,9 @@ function Form(props) {
                     <button type="submit" disabled={submitButtonDisabled} className="btn btn-outline-primary">Submit
                     </button>
                 </div>
-            </FormWithConstraints>
 
+
+            </FormWithConstraints>
 
 
             {/*<form typeof="localization" onSubmit={handleSubmit}>*/}

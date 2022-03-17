@@ -103,7 +103,7 @@ function SelectDeviceLocalization(props) {
 
                             <br/><br/>
                             <div className="d-flex justify-content-md-center">
-                            <button disabled={submitButtonDisabled} title="Submit" className="btn btn-outline-primary">Submit</button>
+                            <button title="Submit" className="btn btn-outline-primary">Submit</button>
                                 </div>
                         </form>
                     </div>

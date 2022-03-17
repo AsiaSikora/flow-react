@@ -37,9 +37,8 @@ function Form(props) {
     }
 
     async function checkDeviceNumberAvailability(value) {
-        await wait(50);
-        if (isNaN(value) || /\s/.test(value) || value === ''){
-          return false;
+        if (isNaN(value) || /\s/.test(value) || value === '') {
+            return false;
         }
         return !props.devicesNumbers.includes(parseInt(value));
     }
@@ -72,8 +71,31 @@ function Form(props) {
 
     return (
         <>
-            <h3>New device</h3><br/>
+            <h3>New device</h3>
+            <br/>
             <FormWithConstraints ref={form} typeof="device" onSubmit={handleSubmit} noValidate>
+                <FieldFeedbacks for="deviceModal">
+                    <FieldFeedback id="fieldForDevice" when="tooShort">Too short</FieldFeedback>
+                    <FieldFeedback when="*"/>
+                    <Async
+                        promise={checkDeviceNumberAvailability}
+                        pending={<span className="d-block"><div className={styles.info}>...</div></span>}
+                        then={available =>
+                            available ? (
+                                <FieldFeedback key="1" style={{color: '#198754' /* $green */}}>
+                                    <div className={styles.info}>Device number available.</div>
+                                </FieldFeedback>
+                            ) : (
+                                <FieldFeedback key="2">
+                                    <div className={styles.info}>Device number already taken or wrong input, choose
+                                        another.
+                                    </div>
+                                </FieldFeedback>
+                            )
+                        }
+                    />
+                </FieldFeedbacks>
+
                 <p className={styles.title}>
                     <label>
                         <div>Device number:</div>
@@ -89,26 +111,6 @@ function Form(props) {
                     />
                 </p>
                 <br/>
-                <FieldFeedbacks for="deviceModal">
-                    <FieldFeedback id="fieldForDevice" when="tooShort">Too short</FieldFeedback>
-                    <FieldFeedback when="*"/>
-                    <Async
-                        promise={checkDeviceNumberAvailability}
-                        pending={<span className="d-block"><div className={styles.info}>...</div></span>}
-                        then={available =>
-                            available ? (
-                                <FieldFeedback key="1" style={{color: '#198754' /* $green */}}>
-                                    <div className={styles.info}>Device number available.</div>
-                                </FieldFeedback>
-                            ) : (
-                                <FieldFeedback key="2">
-                                    <div className={styles.info}>Device number already taken or wrong input, choose another.</div>
-                                </FieldFeedback>
-                            )
-                        }
-                    />
-
-                </FieldFeedbacks>
                 <br/>
                 <div>
                     <button type="send" disabled={submitButtonDisabled} className="btn btn-outline-primary">Submit

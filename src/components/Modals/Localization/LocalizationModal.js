@@ -6,36 +6,36 @@ import ButtonDefault from "../../ButtonDefault/ButtonDefault";
 import ModalForm from "../ModalForm/LocalizationModalForm";
 
 
-export const LocalizationModal = ({showModal, setShowModal}) => {
+export const LocalizationModal = (props) => {
     const modalRef = useRef();
 
     const animation = useSpring({
         config: {
             duration: 250
         },
-        opacity: showModal ? 1 : 0,
-        transform: showModal ? `translateY(0%)` : `translateY(-100%)`
+        opacity: props.showModal ? 1 : 0,
+        transform: props.showModal ? `translateY(0%)` : `translateY(-100%)`
     });
 
     const closeModal = e => {
         if (modalRef.current === e.target) {
-            setShowModal(false);
+            props.setShowModal(false);
         }
     };
 
-    const closeAfterSubmit = () => setShowModal(false);
+    const closeAfterSubmit = () => props.setShowModal(false);
     return (
         <>
-            {showModal ? (
+            {props.showModal ? (
                 <div className={styles.background} onClick={closeModal} ref={modalRef}>
                     <animated.div style={animation}>
                         <div className={styles.modalWrapper}>
                             <div className={styles.modalContent}>
-                                <ModalForm closeModal={closeAfterSubmit}/>
+                                <ModalForm closeModal={closeAfterSubmit} localizationsNames={props.localizationsNames} loadLocalizations={props.loadLocalizations}/>
                             </div>
                             <MdClose className={styles.closeModalButton}
                                      aria-label='Close modal'
-                                     onClick={() => setShowModal(prev => !prev)}
+                                     onClick={() => props.setShowModal(prev => !prev)}
                             />
                         </div>
                     </animated.div>

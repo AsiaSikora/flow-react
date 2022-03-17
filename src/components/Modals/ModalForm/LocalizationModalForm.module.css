@@ -1,9 +1,25 @@
-Form[typeof=localization] { display: table;      }
+.form { display: table; }
 p     { display: table-row;  }
 label { display: table-cell; }
 input { display: table-cell; margin-left: 10px}
 button[type=submit] { display: table-row;
     margin-left: 100% }
+
+
+button[type=send] { display: block;
+    margin: 0 auto; }
+
+.info {
+    display: table-row;
+
+
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    margin-bottom: -20px;
+}
 
 
 

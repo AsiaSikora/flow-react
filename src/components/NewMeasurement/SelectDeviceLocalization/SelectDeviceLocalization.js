@@ -12,6 +12,8 @@ function SelectDeviceLocalization(props) {
     const [showModalDevice, setShowModalDevice] = useState(false);
     let devicesNumbers = [];
     const getAndAddDeviceNumbers = props.devices.map(el => devicesNumbers.push(el.deviceNumber));
+    let localizationsNames = [];
+    const getAndAddLocalizationsNames = props.localizations.map(el => localizationsNames.push(el.name));
 
     const openModalForLocalization = () => {
         setShowModalLocalization(prev => !prev);
@@ -49,9 +51,9 @@ function SelectDeviceLocalization(props) {
     return (
         <>
             <ButtonDefault title="Add new localization" onClick={openModalForLocalization}/>
-            <LocalizationModal showModal={showModalLocalization} setShowModal={setShowModalLocalization}/>
+            <LocalizationModal showModal={showModalLocalization} setShowModal={setShowModalLocalization} localizationsNames={localizationsNames} loadLocalizations={props.loadLocalizations}/>
             <ButtonDefault title="Add new device" onClick={openModalForDevice}/>
-            <DeviceModal showModal={showModalDevice} setShowModal={setShowModalDevice} devicesNumbers={devicesNumbers}/>
+            <DeviceModal showModal={showModalDevice} setShowModal={setShowModalDevice} devicesNumbers={devicesNumbers} loadDevices={props.loadDevices}/>
             <div className="container">
                 <form onSubmit={submit}>
                     <div className="form-group">

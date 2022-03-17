@@ -30,6 +30,14 @@ class NewMeasurement extends Component {
         this.loadLocalizations();
     }
 
+    loadLocalizationOnly() {
+        this.loadLocalizations();
+    }
+
+    loadDevicesOnly() {
+        this.loadDevices();
+    }
+
     render() {
         return (
             <div>
@@ -38,6 +46,8 @@ class NewMeasurement extends Component {
                     <SelectDeviceLocalization 
                     localizations={this.state.localizations}
                     devices={this.state.devices}
+                    loadLocalizations={this.loadLocalizationOnly.bind(this)}
+                    loadDevices={this.loadDevicesOnly.bind(this)}
                      />}
             </div>
         );

@@ -17,18 +17,19 @@ import {
 } from 'react-form-with-constraints-bootstrap';
 import {DisplayFields} from 'react-form-with-constraints-tools';
 import {wait} from "@testing-library/user-event/dist/utils";
-import LoadingIcon from "../../LoadingIcon/LoadingIcon";
+
 
 function Form(props) {
     const form = useRef(null);
     const [deviceNumber, setDeviceNumber] = useState("Provide number");
     const [submitButtonDisabled, setSubmitButtonDisabled] = useState(true);
     const clearNameField = () => setDeviceNumber('');
+    const loadDevices = () => props.loadDevices();
 
     async function ChangeName(event) {
+        setSubmitButtonDisabled(true);
         let checkIfNumberAlreadyExists = props.devicesNumbers.includes(parseInt(event.target.value))
         setDeviceNumber(event.target.value);
-        console.log(event.target.value);
         await form.current.validateFields(event.target);
         if (event.target.value > 0) {
             setSubmitButtonDisabled(checkIfNumberAlreadyExists)
@@ -36,8 +37,8 @@ function Form(props) {
     }
 
     async function checkDeviceNumberAvailability(value) {
-        await wait(500);
-        if (isNaN(value) || /\s/.test(value)){
+        await wait(50);
+        if (isNaN(value) || /\s/.test(value) || value === ''){
           return false;
         }
         return !props.devicesNumbers.includes(parseInt(value));
@@ -64,7 +65,7 @@ function Form(props) {
             })
             .catch((error) => {
                 console.error('Error:', error);
-            })
+            }).then(loadDevices)
             .then(props.closeModal());
 
     }
@@ -72,7 +73,6 @@ function Form(props) {
     return (
         <>
             <h3>New device</h3><br/>
-
             <FormWithConstraints ref={form} typeof="device" onSubmit={handleSubmit} noValidate>
                 <p className={styles.title}>
                     <label>
@@ -111,7 +111,7 @@ function Form(props) {
                 </FieldFeedbacks>
                 <br/>
                 <div>
-                    <button type="aaa" disabled={submitButtonDisabled} className="btn btn-outline-primary">Submit
+                    <button type="send" disabled={submitButtonDisabled} className="btn btn-outline-primary">Submit
                     </button>
                 </div>
             </FormWithConstraints>

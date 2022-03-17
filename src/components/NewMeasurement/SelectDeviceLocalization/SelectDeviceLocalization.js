@@ -1,30 +1,47 @@
-import { useState } from "react";
+import {useState} from "react";
 import {Form} from "react-bootstrap";
 import ButtonDefault from "../../ButtonDefault/ButtonDefault";
+import {LocalizationModal} from "../../Modals/Localization/LocalizationModal";
+import {DeviceModal} from "../../Modals/Device/DeviceModal";
+
 import CurrentMeasurement from "../CurrentMeasurement/CurrentMeasurement";
 
-function SelectDeviceLocalization(props){
+function SelectDeviceLocalization(props) {
 
     const [device, setDevice] = useState('');
     const [localization, setLocalization] = useState('');
     const [visible, setVisibility] = useState(true);
     const [survey, setSurvey] = useState('');
+    const [showModalLocalization, setShowModalLocalization] = useState(false);
+    const [showModalDevice, setShowModalDevice] = useState(false);
+    let devicesNumbers = [];
+    const getAndAddDeviceNumbers = props.devices.map(el => devicesNumbers.push(el.deviceNumber));
+    let localizationsNames = [];
+    const getAndAddLocalizationsNames = props.localizations.map(el => localizationsNames.push(el.name));
+
+    const openModalForLocalization = () => {
+        setShowModalLocalization(prev => !prev);
+    }
+
+    const openModalForDevice = () => {
+        setShowModalDevice(prev => !prev);
+    }
 
     const submit = (e) => {
         e.preventDefault();
         console.log(device, localization)
-        const requestOptions = 
-        {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(
-                {
-                "deviceId": device,
-                "localizationId": localization
-                }
-            )
-        };
-        
+        const requestOptions =
+            {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(
+                    {
+                        "deviceId": device,
+                        "localizationId": localization
+                    }
+                )
+            };
+
         fetch('http://localhost:5000/api/users/2/surveys', requestOptions)
             .then(response => response.json())
             .then(data => setSurvey(data))
@@ -53,34 +70,85 @@ function SelectDeviceLocalization(props){
         console.log("localization ", optionElementId);
     }
 
-    return(
+
+    // return (
+    //     <>
+    //         <ButtonDefault title="Add new localization" onClick={openModalForLocalization}/>
+    //         <LocalizationModal showModal={showModalLocalization} setShowModal={setShowModalLocalization} localizationsNames={localizationsNames} loadLocalizations={props.loadLocalizations}/>
+    //         <ButtonDefault title="Add new device" onClick={openModalForDevice}/>
+    //         <DeviceModal showModal={showModalDevice} setShowModal={setShowModalDevice} devicesNumbers={devicesNumbers} loadDevices={props.loadDevices}/>
+    //
+    //         <div>
+    //         {visible ?
+    //         <div className="container">
+    //             <form onSubmit={submit}>
+    //                 <div className="form-group">
+    //                     <label form="exampleFormControlSelect1">
+    //                         <b>Select device</b>
+    //                     </label>
+    //                     <select
+    //                         className="form-control"
+    //                         id="exampleFormControlSelect1"
+    //                         value={device}
+    //                         onChange={e => setDevice(e.target.value)}
+    //                     >
+    //                         {props.devices.map(device => <option
+    //                             key={device.id} {...device}>{device.deviceNumber}</option>)}
+    //                     </select>
+    //                 </div>
+    //
+    //                 <br/><br/>
+    //                 <div className="form-group">
+    //                     <label form="exampleFormControlSelect2">
+    //                         <b>Select localization</b>
+    //                     </label>
+    //                     <select
+    //                         className="form-control"
+    //                         id="exampleFormControlSelect2"
+    //                         value={localization}
+    //                         onChange={e => setLocalization(e.target.value)}
+    //                     >
+    //                         {props.localizations.map(loc => <option key={loc.id} {...loc}>{loc.name}</option>)}
+    //                     </select>
+    //                 </div>
+    //                 <br/><br/>
+    //                 <ButtonDefault title="Submit"/>
+    //             </form>
+    //         </div>
+    //     </>
+    return (
         <div>
-        {visible ?
-        <div className="container">
-            <form onSubmit={submit}>
-                <label for="selectDevice"><b>Select device</b></label>
-                <Form.Select onChange={handleChangeDevice} id="selectDevice">
-                    <option>---</option>
-                    {props.devices
-                    .map(dev => <option key={dev.id} {...dev}>{dev.deviceNumber}</option>)}
-                </Form.Select>
-                <a href="#" className="link-secondary">Add new device</a>
-                <br/>
-                <label for="selectLocalization"><b>Select localization</b></label>
-                <Form.Select onChange={handleChangeLocalization} id="selectLocalization">
-                    <option>---</option>
-                    {props.localizations
-                    .map(loc => <option key={loc.id} {...loc}>{loc.name}</option>)}
-                </Form.Select>
-                <a href="#" className="link-secondary">Add new localization</a>
-                <br/><br/>
-                <ButtonDefault title="Submit" />
-            </form>
-        </div>
-        : 
-        <div>
-            {survey && <CurrentMeasurement id={survey.id} />}
-        </div>}
+            <ButtonDefault title="Add new localization" onClick={openModalForLocalization}/>
+            // <LocalizationModal showModal={showModalLocalization} setShowModal={setShowModalLocalization}
+                                  localizationsNames={localizationsNames} loadLocalizations={props.loadLocalizations}/>
+            // <ButtonDefault title="Add new device" onClick={openModalForDevice}/>
+            // <DeviceModal showModal={showModalDevice} setShowModal={setShowModalDevice}
+                            devicesNumbers={devicesNumbers} loadDevices={props.loadDevices}/>
+
+            {visible ?
+                <div className="container">
+                    <form onSubmit={submit}>
+                        <label for="selectDevice"><b>Select device</b></label>
+                        <Form.Select onChange={handleChangeDevice} id="selectDevice">
+                            <option>---</option>
+                            {props.devices
+                                .map(dev => <option key={dev.id} {...dev}>{dev.deviceNumber}</option>)}
+                        </Form.Select>
+                        <br/>
+                        <label for="selectLocalization"><b>Select localization</b></label>
+                        <Form.Select onChange={handleChangeLocalization} id="selectLocalization">
+                            <option>---</option>
+                            {props.localizations
+                                .map(loc => <option key={loc.id} {...loc}>{loc.name}</option>)}
+                        </Form.Select>
+                        <br/><br/>
+                        <ButtonDefault title="Submit"/>
+                    </form>
+                </div>
+                :
+                <div>
+                    {survey && <CurrentMeasurement id={survey.id}/>}
+                </div>}
         </div>
     )
 }

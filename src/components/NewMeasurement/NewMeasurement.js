@@ -14,13 +14,13 @@ class NewMeasurement extends Component {
     }
 
     loadDevices() {
-        fetch('http://localhost:5000/api/users/2/Devices')
+        fetch('https://localhost:44365/api/users/2/Devices')
             .then(response => response.json())
             .then(data => this.setState({devices: data}))
     }
 
     loadLocalizations() {
-        fetch('http://localhost:5000/api/users/2/localizations')
+        fetch('https://localhost:44365/api/users/2/localizations')
             .then(response => response.json())
             .then(data => this.setState({localizations: data}))
     }

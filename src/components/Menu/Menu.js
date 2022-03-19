@@ -7,7 +7,7 @@ function Menu() {
     <div className={`sticky-top ${styles.menu}`}>
         <ul className="nav nav-pills justify-content-center">
             <li className="nav-item">
-                <NavLink to="/" className="nav-link">Home</NavLink>
+                <NavLink to="/" exact className="nav-link">Home</NavLink>
             </li>
             <li className="nav-item">
                 <NavLink to="/surveys" className="nav-link">Reports</NavLink>
@@ -15,6 +15,7 @@ function Menu() {
             <li className="nav-item">
                 <a className="nav-link" href="#">Localizations</a>
             </li>
+
             <li className="nav-item">
                 <a className="nav-link disabled" href="#">Log out</a>
             </li>

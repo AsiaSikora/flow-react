@@ -12,7 +12,7 @@ function Details() {
 
   function loadSurvey()
   {
-    fetch(`http://localhost:5000/api/users/2/surveys/${params.id}`)
+    fetch(`http://localhost:44365/api/users/2/surveys/${params.id}`)
     .then(response => response.json())
     .then(data => setSurvey(data))
   }

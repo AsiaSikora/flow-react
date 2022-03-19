@@ -7,7 +7,7 @@ function FetchApiHook() {
 
     function loadProfiles()
     {
-      fetch('https://localhost:5000/api/Users/1')
+      fetch('https://localhost:44365/api/Users/1')
       .then(response => response.json())
       .then(data => setData(data))
     }

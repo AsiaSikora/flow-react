@@ -7,6 +7,9 @@ import SpecialPoints from './components/Details/SpecialPoints/SpecialPoints';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ReportsDetails from "./components/Reports/ReportsDetails/ReportsDetails";
 import Reports from "./components/Reports/Reports";
+import SignIn from './components/SignIn/SignIn';
+import Register from './components/Register/Register';
+
 
 
 function App() {
@@ -16,8 +19,10 @@ function App() {
                 <Menu/>
                 <Routes>
                     <Route path="/surveys/:id" element={<Details />} />
-                    <Route path="/" element={<HomePage />} />
+                    <Route path="/" exact element={<HomePage />} />
                     <Route path="/surveys" element={<Reports />} />
+                    <Route path="/register" element={<Register/>} />
+                    <Route path="/signin" element={<SignIn/>}/>
                 </Routes>
                 <PrivacyPolicy/>
             </Router>

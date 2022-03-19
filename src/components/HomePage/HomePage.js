@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useEffect, useState} from 'react';
 import ButtonDefault from '../ButtonDefault/ButtonDefault';
 import LastMeasurements from '../LastMeasurements/LastMeasurements';
 import NewMeasurement from '../NewMeasurement/NewMeasurement';
@@ -14,8 +14,32 @@ class HomePage extends Component {
         }
     }
 
+    
+
+    // Home = () =>{
+        
+    //         useEffect( () => {
+    //         (
+    //             async () => {
+    //                 await fetch('https://localhost:44365/api/user',{
+    //                 headers: {'Content-Type': 'application/json'},
+    //                 credentials: 'include',
+    //             });
+                
+    //             const content = await response.json();
+    //             console.log(content)
+
+    //         }
+    //         )();
+    //     });
+    // }
+
+
+
+
+
     loadSurveys() {
-        fetch('http://localhost:5000/api/users/2/surveys/last-five-surveys')
+        fetch('http://localhost:44365/api/users/2/surveys/last-five-surveys')
             .then(response => response.json())
             .then(data => this.setState({data: data}))
     }

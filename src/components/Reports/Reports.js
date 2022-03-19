@@ -13,7 +13,7 @@ class Reports extends Component {
     }
 
     loadAllSurveys() {
-        fetch('http://localhost:5000/api/users/2/surveys/surveys-no-measurements')
+        fetch('https://localhost:44365/api/users/2/surveys/surveys-no-measurements')
             .then(response => response.json())
             .then(data => this.setState({surveys: data, loading: false}))
     }

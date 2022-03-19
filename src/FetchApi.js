@@ -12,7 +12,7 @@ class FetchApi extends Component {
 
   loadUsers()
   {
-    fetch('http://localhost:5000/api/Users/1')
+    fetch('http://localhost:44365/api/Users/1')
     .then(response => response.json())
     .then(data => this.setState({data : data}))
   }

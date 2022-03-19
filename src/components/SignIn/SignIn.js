@@ -15,7 +15,7 @@ const SignIn = () => {
             method: 'POST',
             
             mode: 'cors',
-            credentials: 'same-origin',
+            credentials: 'include',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
                 email,

@@ -45,19 +45,19 @@ const Register = () => {
         <form onSubmit={submit}>
             <h2 className="h3 mb-3 fw-normal">Register</h2>
 
-            <input type="firstName" className="form-control" placeholder="First Name"
+            <input id="input-auth" type="firstName" className="form-control" placeholder="First Name"
                 onChange={e => setFirstName(e.target.value)}
             />
 
-            <input type="lastName" className="form-control" placeholder="Last Name"
+            <input id="input-auth" type="lastName" className="form-control" placeholder="Last Name"
                 onChange={e => setLastName(e.target.value)}
             />
 
-            <input type="email" className="form-control" placeholder="name@example.com"
+            <input id="input-auth" type="email" className="form-control" placeholder="name@example.com"
                 onChange={e => setEmail(e.target.value)}
             />
 
-            <input id="password1" type="password" className="form-control" placeholder="Password"
+            <input id="input-auth" type="password" className="form-control" placeholder="Password"
                 onChange={e=> setPassword(e.target.value)}
             />
 

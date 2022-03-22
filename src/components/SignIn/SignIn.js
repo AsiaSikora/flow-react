@@ -46,14 +46,14 @@ const SignIn = () => {
     return (
         <div className= "container-form">
             <h1>FlowMeter</h1>
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+            <p>An application that allows you to integrate the device with a database and easily manage the measurements</p>
             <form onSubmit={submit}>            
                 <h2 className="h3 mb-3 fw-normal">Please sign in</h2>
 
-                <input type="email" className="form-control" placeholder="name@example.com"
+                <input id="input-auth" type="email" className="form-control" placeholder="name@example.com"
                     onChange={e => setEmail(e.target.value)}
                 />
-                <input type="password" className="form-control" placeholder="Password"
+                <input id="input-auth" type="password" className="form-control" placeholder="Password"
                     onChange={e => setPassword(e.target.value)}
                 />
 

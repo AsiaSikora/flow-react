@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-import SelectDevice from './SelectDevice/SelectDevice';
 import styles from './NewMeasurement.module.css';
-import SelectLocalization from './SelectLocalization/SelectLocalization';
 import SelectDeviceLocalization from './SelectDeviceLocalization/SelectDeviceLocalization';
 
 class NewMeasurement extends Component {

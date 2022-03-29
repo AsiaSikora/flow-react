@@ -13,7 +13,7 @@ function SurveyDetails(props) {
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item">Device number: {props.survey.device.deviceNumber}</li>
                     <li className="list-group-item">Localization name: {props.survey.localization.name}</li>
-                    <li className="list-group-item">Average flow: <b>{(averageFlows[len-1]).toString().slice(0,5)}</b></li>
+                    <li className="list-group-item">Average flow: <b>{(averageFlows[len-1]).toString().slice(0,5)} m&#179;/s</b></li>
                 </ul>
             </div>
         </div>

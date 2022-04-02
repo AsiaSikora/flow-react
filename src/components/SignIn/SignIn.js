@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import { Navigate } from "react-router-dom";
 import {NavLink} from 'react-router-dom';
+import styles from './SignIn.module.css';
 
-const SignIn = () => {
+const SignIn = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [redirect, setRedirect] = useState(false);
@@ -13,29 +14,26 @@ const SignIn = () => {
 
         const response = await fetch('http://localhost:5000/api/login',{
             method: 'POST',
-            
             mode: 'cors',
             credentials: 'include',
-            headers: {'Content-Type': 'application/json'},
+            headers: {'Content-Type': 'application/json', 'withCredentials': 'true'},
             body: JSON.stringify({
                 email,
                 password
             })
         })
-
         .then((response) => {
-            if (response.status == 200){
+            if (response.status === 200){
                 console.log(response)
-                setRedirect(true);
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1);
+                setRedirect(true)
             }
             else
                 window.alert('Login failed: incorrect username or password')
         })
         
-
-
-        
-
     }
     
     if(redirect){
@@ -44,16 +42,16 @@ const SignIn = () => {
 
 
     return (
-        <div className= "container-form">
+        <div className={`${styles.container} `}>
             <h1>FlowMeter</h1>
             <p>An application that allows you to integrate the device with a database and easily manage the measurements</p>
             <form onSubmit={submit}>            
                 <h2 className="h3 mb-3 fw-normal">Please sign in</h2>
 
-                <input id="input-auth" type="email" className="form-control" placeholder="name@example.com"
+                <input id={`${styles.input}`} type="email" className="form-control" placeholder="name@example.com"
                     onChange={e => setEmail(e.target.value)}
                 />
-                <input id="input-auth" type="password" className="form-control" placeholder="Password"
+                <input id={`${styles.input}`} type="password" className="form-control" placeholder="Password"
                     onChange={e => setPassword(e.target.value)}
                 />
 

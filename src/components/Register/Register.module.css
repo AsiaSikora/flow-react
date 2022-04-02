@@ -1,0 +1,19 @@
+.container{
+  margin: 0 auto;
+  width: 70%;
+  background-color: #ffff;
+  box-sizing: border-box;
+  padding: 50px;
+  margin-top: 0px;
+}
+
+#input{
+  margin-left: 0px;
+}
+
+/* form {
+  text-align: justify;
+  width:50%;
+  margin:auto;
+
+} */

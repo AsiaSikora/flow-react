@@ -1,3 +1,4 @@
+import React, {useEffect, useState} from 'react';
 import Menu from './components/Menu/Menu';
 import HomePage from './components/HomePage/HomePage';
 import NewMeasurement from './components/NewMeasurement/NewMeasurement';
@@ -12,16 +13,34 @@ import Register from './components/Register/Register';
 
 
 function App() {
+    const [firstName, setFirstName] = useState ('');
+    
+    useEffect(() => {
+        (
+            async () => {
+                const response = await fetch('http://localhost:5000/api/user', {
+                    credentials: 'include',
+                    headers: { 'Content-Type': 'application/json' },
+                });
+
+                const content = await response.json();
+
+                setFirstName(content.firstName);
+            }
+        )();
+    },[]);
+
+
     return (
         <div>
             <Router>
-                <Menu/>
+                <Menu firstName={firstName}/>
                 <Routes>
-                    <Route path="/surveys/:id" element={<Details />} />
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/surveys" element={<Reports />} />
-                    <Route path="/register" element={<Register/>} />
-                    <Route path="/signin" element={<SignIn/>}/>
+                    <Route path="/surveys/:id" element={firstName && <Details firstName = {firstName} />} />
+                    <Route path="/" exact element={firstName &&<HomePage firstName = {firstName}/>} />
+                    <Route path="/surveys" element={firstName &&<Reports firstName = {firstName}/>} />
+                    <Route path="/register" element={<Register/>}/>
+                    <Route path="/signin" element={<SignIn />}/>
                 </Routes>
                 <PrivacyPolicy/>
             </Router>

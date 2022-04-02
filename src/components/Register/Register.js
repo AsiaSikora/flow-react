@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { Navigate } from "react-router-dom";
+import styles from './Register.module.css';
 
 
 const Register = () => {
@@ -8,6 +9,7 @@ const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [redirect, setRedirect] = useState(false);
+
 
     const submit = async (e) => {
         e.preventDefault();
@@ -23,7 +25,7 @@ const Register = () => {
             })
         })
         .then((response) => {
-            if (response.status == 201){
+            if (response.status === 201){
                 console.log(response)
                 setRedirect(true);
             }
@@ -34,38 +36,40 @@ const Register = () => {
         
     }
 
+    
+
     if(redirect){
         return <Navigate to="/signin"></Navigate>
     };
   
-    
+
 
     return (
-        <div className="container-form">
-        <form onSubmit={submit}>
-            <h2 className="h3 mb-3 fw-normal">Register</h2>
+        <div className={`${styles.container} `}>
+            <form onSubmit={submit}>
+                <h2 className="h3 mb-3 fw-normal">Register</h2>
 
-            <input id="input-auth" type="firstName" className="form-control" placeholder="First Name"
-                onChange={e => setFirstName(e.target.value)}
-            />
+                <input id={`${styles.input}`} type="firstName" className="form-control" placeholder="First Name"
+                    onChange={e => setFirstName(e.target.value)}
+                />
 
-            <input id="input-auth" type="lastName" className="form-control" placeholder="Last Name"
-                onChange={e => setLastName(e.target.value)}
-            />
+                <input id={`${styles.input}`} type="lastName" className="form-control" placeholder="Last Name"
+                    onChange={e => setLastName(e.target.value)}
+                />
 
-            <input id="input-auth" type="email" className="form-control" placeholder="name@example.com"
-                onChange={e => setEmail(e.target.value)}
-            />
+                <input id={`${styles.input}`} type="email" className="form-control" placeholder="name@example.com"
+                    onChange={e => setEmail(e.target.value)}
+                />
 
-            <input id="input-auth" type="password" className="form-control" placeholder="Password"
-                onChange={e=> setPassword(e.target.value)}
-            />
+                <input id={`${styles.input}`} type="password" className="form-control" placeholder="Password"
+                    onChange={e=> setPassword(e.target.value)}
+                />
 
-            {/* <input id="password2" type="password" className="form-control" placeholder="Confirm your password"/> */}
+                {/* <input id="password2" type="password" className="form-control" placeholder="Confirm your password"/> */}
 
 
-            <button className="w-100 btn btn-lg btn-primary" type="submit">Register</button>
-        </form>
+                <button className="w-100 btn btn-lg btn-primary" type="submit">Register</button>
+            </form>
         </div>
             );
         }

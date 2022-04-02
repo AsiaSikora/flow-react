@@ -21,15 +21,6 @@ code {
 }
 
 
-.container-form{
-  margin: 0 auto;
-  width: 70%;
-  background-color: #ffff;
-  box-sizing: border-box;
-  padding: 50px;
-  margin-top: 0px;
-}
-
 h1 {
   text-align: center;
   background-color: #ffff;
@@ -46,9 +37,5 @@ form {
 
 h2 {
   padding-top: 10px;
-}
-
-#input-auth{
-  margin-left: 0px;
 }
 

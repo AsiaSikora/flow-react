@@ -27,7 +27,6 @@ function Details() {
           {survey && <SurveyDetails survey={survey} />}
           {survey && <Graph survey={survey} />}
           {survey && <SpecialPoints survey={survey}/>}
-          {survey && <DeleteSurvey id={params.id} />}
       </div>
   )
 }

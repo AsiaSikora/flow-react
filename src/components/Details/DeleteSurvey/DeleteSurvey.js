@@ -1,7 +1,7 @@
 import { Navigate } from 'react-router-dom';
 import { useState } from 'react';
 
-function DeleteSurvey(){
+function DeleteSurvey(props){
 
     const [isDeleted, setDeleted] = useState(false);
     

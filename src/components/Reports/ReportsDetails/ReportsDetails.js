@@ -4,23 +4,14 @@ import {Link} from "react-router-dom";
 
 function ReportsDetails(props) {
     return (
-        <div className="container">
-            <div key={props.survey.id} className={styles.form}>
-                <div className="card">
-                    <div className="card-header">
-                        Survey id: {props.survey.id}
-                    </div>
-                    <div className="card-body">
-                        <h5 className="card-title">Date: {(props.survey.date).slice(0, 10)} at {(props.survey.date).slice(11, 16)}</h5>
-                        <p className="card-text">
-                            Place: {props.survey.localization.name}<br/>
-                            Device number: {props.survey.device.deviceNumber}
-                        </p>
-                        <Link to={`/surveys/${props.survey.id}`} href="#" className="btn btn-primary">More</Link>
-                    </div>
-                </div>
-            </div>
-        </div>)
+        <tr className="text-center">
+            <th scope="row"><Link to={`/surveys/${props.survey.id}`}>{props.survey.id}</Link></th>
+            <td>{(props.survey.date).slice(0, 10)} at {(props.survey.date).slice(11, 16)}</td>
+            <td>{props.survey.localization.name}</td>
+            <td>{props.survey.localization.gpsCoordinate1}, {props.survey.localization.gpsCoordinate2}</td>
+            <td>{props.survey.device.deviceNumber}</td>
+        </tr>
+    )
 }
 
 

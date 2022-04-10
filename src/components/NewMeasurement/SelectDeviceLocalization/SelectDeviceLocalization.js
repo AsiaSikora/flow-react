@@ -8,8 +8,8 @@ import CurrentMeasurement from "../CurrentMeasurement/CurrentMeasurement";
 
 function SelectDeviceLocalization(props) {
 
-    const [device, setDevice] = useState('---');
-    const [localization, setLocalization] = useState('---');
+    const [device, setDevice] = useState(null);
+    const [localization, setLocalization] = useState(null);
     const [visible, setVisibility] = useState(true);
     const [survey, setSurvey] = useState('');
     const [showModalLocalization, setShowModalLocalization] = useState(false);
@@ -30,7 +30,7 @@ function SelectDeviceLocalization(props) {
     const submit = (e) => {
         e.preventDefault();
         console.log(device, localization)
-        if (device != '---' && device != null && localization != '---' && localization != null){
+        if (device != null && localization != null){
             const requestOptions =
             {
                 method: 'POST',

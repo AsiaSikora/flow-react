@@ -6,18 +6,6 @@ function CurrentMeasurement(props){
 
     const [measurement, setMeasurement] = useState('');
     const[survey, setSurvey] = useState(null);
-  
-    // function loadSurvey()
-    // {
-    //   fetch(`http://localhost:5000/api/users/2/surveys/${props.survey.id}`)
-    //   .then(response => response.json())
-    //   .then(data => setSurvey(data))
-    // }
-  
-    // React.useEffect(() => {
-    //   loadSurvey();
-    // }, [])
-    
 
     function getRandomInt(min, max) {
         min = Math.ceil(min);

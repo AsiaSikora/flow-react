@@ -60,7 +60,7 @@ function Menu() {
                         <NavLink to="/surveys" className="nav-link">Reports</NavLink>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Localizations</a>
+                        <NavLink to="/localizations" className="nav-link">Localizations</NavLink>
                     </li>
                     <li className="nav-item">
                         <NavLink to="/signin" className="nav-link" onClick={logout}>Logout</NavLink>

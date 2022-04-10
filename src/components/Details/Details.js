@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Graph from './Graph/Graph.js';
 import SurveyDetails from './SurveyDetails/SurveyDetails';
 import SpecialPoints from './SpecialPoints/SpecialPoints';
 import { useParams } from "react-router-dom";
-import DeleteSurvey from './DeleteSurvey/DeleteSurvey.js';
+import Map from '../Map/Map'
 
 function Details() {
 
@@ -27,6 +27,7 @@ function Details() {
           {survey && <SurveyDetails survey={survey} />}
           {survey && <Graph survey={survey} />}
           {survey && <SpecialPoints survey={survey}/>}
+          {survey && <Map survey={survey}/>}
       </div>
   )
 }

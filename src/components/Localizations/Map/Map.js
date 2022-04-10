@@ -1,24 +1,29 @@
-import { MapContainer, TileLayer, Marker } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import styles from './Map.module.css';
+import { useNavigate } from "react-router-dom";
 
 export default function Map(props){
 
-  let lat = props.survey.localization.gpsCoordinate2;
-  let lng = props.survey.localization.gpsCoordinate1;
+  let navigate = useNavigate();
 
   return(
     <div className="container d-flex justify-content-center">
       <MapContainer
       className={styles.position}
-      center={[lat, lng]}
-      zoom={12}
+      center={[52.3, 19.4]}
+      zoom={6}
       maxZoom={18}
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       />
-      <Marker position={[lat, lng]} />
+      {props.localizations.map(loc => 
+        <Marker 
+            key={loc.id}
+            position={[loc.gpsCoordinate2, loc.gpsCoordinate1]} 
+            {...loc}>
+      </Marker>)}
     </MapContainer>
 
     </div>);

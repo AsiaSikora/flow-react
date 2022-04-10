@@ -3,7 +3,7 @@ import Graph from './Graph/Graph.js';
 import SurveyDetails from './SurveyDetails/SurveyDetails';
 import SpecialPoints from './SpecialPoints/SpecialPoints';
 import { useParams } from "react-router-dom";
-import Map from '../Map/Map'
+import SurveyMap from './SurveyMap/SurveyMap';
 
 function Details() {
 
@@ -27,7 +27,7 @@ function Details() {
           {survey && <SurveyDetails survey={survey} />}
           {survey && <Graph survey={survey} />}
           {survey && <SpecialPoints survey={survey}/>}
-          {survey && <Map survey={survey}/>}
+          {survey && <SurveyMap survey={survey}/>}
       </div>
   )
 }

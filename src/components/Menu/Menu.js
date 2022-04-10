@@ -13,7 +13,7 @@ function Menu() {
                 <NavLink to="/surveys" className="nav-link">Reports</NavLink>
             </li>
             <li className="nav-item">
-                <a className="nav-link" href="#">Localizations</a>
+                <NavLink to="/localizations" className="nav-link">Localizations</NavLink>
             </li>
             <li className="nav-item">
                 <a className="nav-link disabled" href="#">Log out</a>

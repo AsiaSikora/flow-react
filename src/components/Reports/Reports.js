@@ -16,8 +16,12 @@ class Reports extends Component {
     }
 
     loadAllSurveys() {
-        fetch('http://localhost:5000/api/users/2/surveys/surveys-no-measurements')
-            .then(response => response.json())
+        fetch('http://localhost:5000/api/user/surveys-no-measurements',{
+            method: 'GET',
+            mode: 'cors',
+            credentials: 'include',
+            headers: {'Content-Type': 'application/json'}
+        })            .then(response => response.json())
             .then(data => this.setState({surveys: data, loading: false}))
     }
 

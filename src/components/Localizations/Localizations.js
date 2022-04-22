@@ -7,7 +7,12 @@ export default function Localizations(){
 
   function loadLocalizations()
   {
-    fetch(`http://localhost:5000/api/users/2/localizations`)
+    fetch('http://localhost:5000/api/user/getlocalizations',{
+      method: 'GET',
+      mode: 'cors',
+      credentials: 'include',
+      headers: {'Content-Type': 'application/json'}
+  })
     .then(response => response.json())
     .then(data => setLocalizations(data))
   }

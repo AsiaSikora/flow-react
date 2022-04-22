@@ -12,13 +12,23 @@ class NewMeasurement extends Component {
     }
 
     loadDevices() {
-        fetch('http://localhost:5000/api/users/2/Devices')
+        fetch('http://localhost:5000/api/user/getdevices',{
+            method: 'GET',
+            mode: 'cors',
+            credentials: 'include',
+            headers: {'Content-Type': 'application/json'}
+        })
             .then(response => response.json())
             .then(data => this.setState({devices: data}))
     }
 
     loadLocalizations() {
-        fetch('http://localhost:5000/api/users/2/localizations')
+        fetch('http://localhost:5000/api/user/getlocalizations',{
+            method: 'GET',
+            mode: 'cors',
+            credentials: 'include',
+            headers: {'Content-Type': 'application/json'}
+        })
             .then(response => response.json())
             .then(data => this.setState({localizations: data}))
     }

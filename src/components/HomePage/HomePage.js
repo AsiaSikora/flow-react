@@ -17,7 +17,12 @@ class HomePage extends Component {
     }
 
     loadSurveys() {
-        fetch('http://localhost:5000/api/users/2/surveys/last-five-surveys')
+        fetch('http://localhost:5000/api/user/last-five-surveys',{
+        method: 'GET',
+        mode: 'cors',
+        credentials: 'include',
+        headers: {'Content-Type': 'application/json'}
+    })
             .then(response => response.json())
             .then(data => this.setState({data: data}))
     }

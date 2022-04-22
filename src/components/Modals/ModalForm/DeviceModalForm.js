@@ -50,6 +50,8 @@ function Form(props) {
         setSubmitButtonDisabled(!form.current.isValid());
         const requestOptions = {
             method: 'POST',
+            mode: 'cors',
+            credentials: 'include',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(
                 {
@@ -57,7 +59,7 @@ function Form(props) {
                 }
             )
         };
-        fetch('http://localhost:5000/api/users/2/Devices', requestOptions)
+        fetch('http://localhost:5000/api/user/adddevice', requestOptions)
             .then(response => response.json())
             .then(data => {
                 console.log('Success:', data);
